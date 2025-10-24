@@ -4,9 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gestion des Relais de Natation</title>
-    <!-- Chargement de Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Configuration de la police Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -37,15 +35,12 @@
     <div class="container mx-auto max-w-7xl p-4 md:p-8">
         <h1 class="text-3xl font-bold text-blue-700 mb-8 text-center">Gestion des Relais de Natation</h1>
 
-        <!-- Section 1: Gestion des Nageurs -->
         <section class="bg-white p-6 rounded-lg shadow-md mb-8">
             <h2 class="text-2xl font-semibold mb-6">Gestion des Nageurs</h2>
             
-            <!-- Formulaire pour ajouter/modifier un nageur -->
             <form id="swimmer-form" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
                 <input type="hidden" id="editing-id">
                 
-                <!-- Infos Nageur -->
                 <div>
                     <label for="nom" class="block text-sm font-medium text-gray-700">Nom</label>
                     <input type="text" id="nom" required class="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
@@ -55,63 +50,58 @@
                     <input type="text" id="prenom" required class="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
                 </div>
 
-                <!-- Temps : Dos -->
                 <div>
                     <label for="50m Dos" class="block text-sm font-medium text-gray-700">50m Dos</label>
-                    <input type="text" id="50m Dos" placeholder="MM:SS.ss" class="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
+                    <input type="text" id="50m Dos" placeholder="00:00.00" class="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
                 </div>
                 <div>
                     <label for="100m Dos" class="block text-sm font-medium text-gray-700">100m Dos</label>
-                    <input type="text" id="100m Dos" placeholder="MM:SS.ss" class="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
+                    <input type="text" id="100m Dos" placeholder="00:00.00" class="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
                 </div>
                 <div>
                     <label for="200m Dos" class="block text-sm font-medium text-gray-700">200m Dos</label>
-                    <input type="text" id="200m Dos" placeholder="MM:SS.ss" class="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
+                    <input type="text" id="200m Dos" placeholder="00:00.00" class="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
                 </div>
 
-                <!-- Temps : Brasse -->
                 <div>
                     <label for="50m Brasse" class="block text-sm font-medium text-gray-700">50m Brasse</label>
-                    <input type="text" id="50m Brasse" placeholder="MM:SS.ss" class="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
+                    <input type="text" id="50m Brasse" placeholder="00:00.00" class="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
                 </div>
                 <div>
                     <label for="100m Brasse" class="block text-sm font-medium text-gray-700">100m Brasse</label>
-                    <input type="text" id="100m Brasse" placeholder="MM:SS.ss" class="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
+                    <input type="text" id="100m Brasse" placeholder="00:00.00" class="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
                 </div>
                 <div>
                     <label for="200m Brasse" class="block text-sm font-medium text-gray-700">200m Brasse</label>
-                    <input type="text" id="200m Brasse" placeholder="MM:SS.ss" class="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
+                    <input type="text" id="200m Brasse" placeholder="00:00.00" class="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
                 </div>
 
-                <!-- Temps : Papillon -->
                 <div>
                     <label for="50m Papillon" class="block text-sm font-medium text-gray-700">50m Papillon</label>
-                    <input type="text" id="50m Papillon" placeholder="MM:SS.ss" class="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
+                    <input type="text" id="50m Papillon" placeholder="00:00.00" class="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
                 </div>
                 <div>
                     <label for="100m Papillon" class="block text-sm font-medium text-gray-700">100m Papillon</label>
-                    <input type="text" id="100m Papillon" placeholder="MM:SS.ss" class="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
+                    <input type="text" id="100m Papillon" placeholder="00:00.00" class="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
                 </div>
                 <div>
                     <label for="200m Papillon" class="block text-sm font-medium text-gray-700">200m Papillon</label>
-                    <input type="text" id="200m Papillon" placeholder="MM:SS.ss" class="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
+                    <input type="text" id="200m Papillon" placeholder="00:00.00" class="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
                 </div>
 
-                <!-- Temps : Crawl -->
                 <div>
                     <label for="50m Crawl" class="block text-sm font-medium text-gray-700">50m Crawl</label>
-                    <input type="text" id="50m Crawl" placeholder="MM:SS.ss" class="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
+                    <input type="text" id="50m Crawl" placeholder="00:00.00" class="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
                 </div>
                 <div>
                     <label for="100m Crawl" class="block text-sm font-medium text-gray-700">100m Crawl</label>
-                    <input type="text" id="100m Crawl" placeholder="MM:SS.ss" class="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
+                    <input type="text" id="100m Crawl" placeholder="00:00.00" class="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
                 </div>
                 <div>
                     <label for="200m Crawl" class="block text-sm font-medium text-gray-700">200m Crawl</label>
-                    <input type="text" id="200m Crawl" placeholder="MM:SS.ss" class="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
+                    <input type="text" id="200m Crawl" placeholder="00:00.00" class="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
                 </div>
 
-                <!-- Boutons du formulaire -->
                 <div class="sm:col-span-2 md:col-span-3 lg:col-span-4 flex items-center space-x-4 mt-4">
                     <button type="submit" id="save-button" class="py-2 px-5 bg-blue-600 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-75">
                         Enregistrer Nageur
@@ -122,22 +112,18 @@
                 </div>
             </form>
 
-            <!-- Tableau des Nageurs -->
             <div class="mt-8 block w-full overflow-x-auto">
                 <table class="min-w-full divide-y divide-gray-200">
                     <thead class="bg-gray-50">
                         <tr id="table-header">
-                            <!-- Les en-têtes seront générés par JS -->
-                        </tr>
+                            </tr>
                     </thead>
                     <tbody id="swimmers-list" class="bg-white divide-y divide-gray-200">
-                        <!-- Les nageurs seront insérés ici par JS -->
-                    </tbody>
+                        </tbody>
                 </table>
             </div>
         </section>
 
-        <!-- Section 2: Calculateur de Relais -->
         <section class="bg-white p-6 rounded-lg shadow-md">
             <h2 class="text-2xl font-semibold mb-6">Calculateur de Relais</h2>
             
@@ -157,7 +143,6 @@
                 </button>
             </div>
 
-            <!-- Zone de résultat -->
             <div id="relay-result" class="mt-6 p-4 bg-gray-50 rounded-lg min-h-[100px] border border-gray-200">
                 <p class="text-gray-500">Les résultats s'afficheront ici.</p>
             </div>
@@ -165,7 +150,6 @@
 
     </div>
 
-    <!-- Modal pour les alertes (remplace messagebox) -->
     <div id="alert-modal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50 hidden opacity-0">
         <div class="bg-white rounded-lg shadow-xl max-w-sm w-full p-6">
             <h3 id="modal-title" class="text-lg font-medium leading-6 text-gray-900 mb-2"></h3>
@@ -263,6 +247,13 @@
                 if (timeStr === "99:99:99" || timeStr.trim() === "") {
                     return Infinity;
                 }
+                // *** CORRIGÉ : Teste le bon format avant de convertir ***
+                const regex = /^\d{1,2}:\d{2}\.\d{2}$/;
+                if (!regex.test(timeStr)) {
+                    return Infinity; // Ne devrait pas arriver si la validation du formulaire est passée
+                }
+                // *** FIN CORRECTION ***
+
                 const parts = timeStr.split(':');
                 if (parts.length !== 2) {
                     return Infinity;
@@ -280,7 +271,7 @@
             }
 
             /**
-             * Convertit les secondes en "MM:SS.sss".
+             * Convertit les secondes en "MM:SS.ss". (2 décimales)
              * @param {number} seconds - Le temps en secondes.
              * @returns {string} La chaîne de temps formatée.
              */
@@ -290,7 +281,9 @@
                 }
                 const minutes = Math.floor(seconds / 60);
                 const remainingSeconds = seconds % 60;
-                return `${String(minutes).padStart(2, '0')}:${remainingSeconds.toFixed(3).padStart(6, '0')}`;
+                
+                // *** CORRIGÉ : toFixed(2) pour 2 décimales et padStart(5) pour SS.ss ***
+                return `${String(minutes).padStart(2, '0')}:${remainingSeconds.toFixed(2).padStart(5, '0')}`;
             }
 
             /**
@@ -347,6 +340,13 @@
             function loadSwimmers() {
                 const data = localStorage.getItem(DB_KEY);
                 swimmers = data ? JSON.parse(data) : [];
+                
+                // *** NOUVEAU : Migration pour ajouter la propriété 'isActive' ***
+                swimmers.forEach(s => {
+                    if (s.isActive === undefined) {
+                        s.isActive = true; // Les anciens nageurs sont actifs par défaut
+                    }
+                });
             }
 
             /** Sauvegarde les nageurs dans le LocalStorage */
@@ -384,7 +384,13 @@
 
                 swimmers.forEach(swimmer => {
                     const tr = document.createElement('tr');
-                    tr.className = 'hover:bg-gray-50';
+                    
+                    // *** MODIFIÉ : Appliquer un style si inactif ***
+                    if (swimmer.isActive === false) {
+                        tr.className = 'hover:bg-gray-50 opacity-50 bg-gray-100';
+                    } else {
+                        tr.className = 'hover:bg-gray-50';
+                    }
                     
                     // Ajouter Nom et Prénom
                     tr.innerHTML += `<td class="px-4 py-3 text-sm font-medium text-gray-900">${swimmer.nom}</td>`;
@@ -392,7 +398,8 @@
                     
                     // Ajouter les temps
                     TIME_COLUMNS.forEach(col => {
-                        tr.innerHTML += `<td class="px-4 py-3 text-sm text-gray-600">${swimmer[col] || 'N/A'}</td>`;
+                        const timeDisplay = (swimmer[col] === "99:99:99" || !swimmer[col]) ? 'N/A' : swimmer[col];
+                        tr.innerHTML += `<td class="px-4 py-3 text-sm text-gray-600">${timeDisplay}</td>`;
                     });
 
                     // Ajouter les boutons d'action
@@ -405,6 +412,14 @@
                     editButton.dataset.id = swimmer.id;
                     editButton.addEventListener('click', handleEdit);
                     
+                    // *** NOUVEAU : Bouton Activer/Désactiver ***
+                    const toggleButton = document.createElement('button');
+                    toggleButton.textContent = swimmer.isActive ? 'Désactiver' : 'Activer';
+                    toggleButton.className = swimmer.isActive ? 'text-yellow-600 hover:text-yellow-900 mr-4' : 'text-green-600 hover:text-green-900 mr-4';
+                    toggleButton.dataset.id = swimmer.id;
+                    toggleButton.addEventListener('click', handleToggleActive);
+                    // *** FIN NOUVEAU BOUTON ***
+
                     const deleteButton = document.createElement('button');
                     deleteButton.textContent = 'Supprimer';
                     deleteButton.className = 'text-red-600 hover:text-red-900';
@@ -412,6 +427,7 @@
                     deleteButton.addEventListener('click', handleDelete);
 
                     tdActions.appendChild(editButton);
+                    tdActions.appendChild(toggleButton); // *** AJOUTÉ ***
                     tdActions.appendChild(deleteButton);
                     tr.appendChild(tdActions);
 
@@ -430,32 +446,46 @@
                     nom: document.getElementById('nom').value.trim(),
                     prenom: document.getElementById('prenom').value.trim(),
                 };
+                
+                // *** NOUVELLE VALIDATION STRICTE ***
+                const regex = /^\d{1,2}:\d{2}\.\d{2}$/; // Format MM:SS.ss (2 décimales)
+                let validationError = null;
 
                 TIME_COLUMNS.forEach(col => {
-                    // Valider le format MM:SS.ss (simple validation)
                     const timeInput = document.getElementById(col).value.trim();
-                    const regex = /^\d{1,2}:\d{2}\.\d{1,3}$/;
+                    
                     if (timeInput && !regex.test(timeInput)) {
-                         // Si un temps est entré mais invalide, on le garde mais il sera traité comme Infini
-                         swimmerData[col] = timeInput; 
-                         console.warn(`Format de temps invalide pour ${col}: ${timeInput}. Il sera traité comme N/A.`);
+                        // Si le champ n'est pas vide MAIS invalide
+                        validationError = `Format de temps invalide pour ${col}: "${timeInput}".<br>Veuillez utiliser le format <strong>00:00.00</strong>.`;
                     } else if (timeInput) {
+                        // Valide
                         swimmerData[col] = timeInput;
                     } else {
+                        // Vide
                         swimmerData[col] = "99:99:99"; // Valeur par défaut si vide
                     }
                 });
 
+                if (validationError) {
+                    showAlert("Erreur de Saisie", validationError);
+                    return; // Arrête la soumission
+                }
+                // *** FIN NOUVELLE VALIDATION ***
+
+                // *** MODIFIÉ : Gérer la propriété 'isActive' ***
                 if (editingId) {
                     // Mettre à jour le nageur existant
                     const index = swimmers.findIndex(s => s.id === editingId);
                     if (index > -1) {
-                        swimmers[index] = swimmerData;
+                        // On fusionne les données pour ne pas écraser 'isActive'
+                        swimmers[index] = { ...swimmers[index], ...swimmerData };
                     }
                 } else {
                     // Ajouter un nouveau nageur
+                    swimmerData.isActive = true; // Actif par défaut
                     swimmers.push(swimmerData);
                 }
+                // *** FIN MODIFICATION ***
 
                 saveAndReset();
             }
@@ -489,6 +519,19 @@
                 }
             }
 
+            // *** NOUVEAU : Gère le basculement Actif/Inactif ***
+            /** Active/Désactive un nageur pour le calcul */
+            function handleToggleActive(e) {
+                const id = e.target.dataset.id;
+                const swimmer = swimmers.find(s => s.id === id);
+                if (swimmer) {
+                    swimmer.isActive = !swimmer.isActive; // Inverse le statut
+                    saveSwimmers();
+                    renderSwimmers(); // Rafraîchit la table
+                }
+            }
+            // *** FIN NOUVELLE FONCTION ***
+
             /** Réinitialise le formulaire */
             function resetForm() {
                 form.reset();
@@ -516,20 +559,24 @@
                 const strokes = RELAY_DEFINITIONS[relayType];
                 const k = strokes.length; // Nombre de nageurs dans le relais
 
-                if (swimmers.length < k) {
-                    showAlert("Erreur de Calcul", `Pas assez de nageurs (${swimmers.length}) pour un relais de ${k}.`);
+                // *** MODIFIÉ : Filtrer les nageurs actifs ***
+                const activeSwimmers = swimmers.filter(s => s.isActive);
+                // *** FIN MODIFICATION ***
+                
+                if (activeSwimmers.length < k) { // <-- MODIFIÉ
+                    showAlert("Erreur de Calcul", `Pas assez de nageurs *actifs* (${activeSwimmers.length}) pour un relais de ${k}.<br>Veuillez activer des nageurs dans le tableau ci-dessus.`); // <-- MODIFIÉ
                     return;
                 }
 
                 // --- Sécurité pour les grosses permutations ---
                 // P(n, k) devient énorme très vite. P(15, 10) > 10 milliards.
                 // On met une limite raisonnable pour un navigateur.
-                if (k > 8 && swimmers.length > 12) {
+                if (k > 8 && activeSwimmers.length > 12) { // <-- MODIFIÉ
                      showAlert("Calcul Trop Complexe", 
-                        `Calculer un relais de ${k} avec ${swimmers.length} nageurs (P(${swimmers.length}, ${k})) 
+                        `Calculer un relais de ${k} avec ${activeSwimmers.length} nageurs actifs (P(${activeSwimmers.length}, ${k})) 
                         est trop long pour le navigateur.<br>
                         Veuillez réduire le nombre de nageurs dans la base de données (temporairement) 
-                        ou choisir un relais plus court.`
+                        ou choisir un relais plus court.` // <-- MODIFIÉ
                     );
                     return;
                 }
@@ -546,8 +593,8 @@
                 let bestCombination = null;
                 let combinationsChecked = 0;
 
-                // Itérer sur toutes les permutations possibles des nageurs
-                for (const combination of getPermutations(swimmers, k)) {
+                // Itérer sur toutes les permutations possibles des nageurs *actifs*
+                for (const combination of getPermutations(activeSwimmers, k)) { // <-- MODIFIÉ
                     combinationsChecked++;
                     let totalTime = 0;
                     let valid = true;
@@ -586,13 +633,13 @@
                     });
                     
                     resultHTML += `</ol>`;
-                    resultHTML += `<p class="text-xs text-gray-500 mt-4">${combinationsChecked.toLocaleString('fr-FR')} combinaisons vérifiées.</p>`;
+                    resultHTML += `<p class="text-xs text-gray-500 mt-4">${combinationsChecked.toLocaleString('fr-FR')} combinaisons vérifiées (parmi ${activeSwimmers.length} nageurs actifs).</p>`;
                     resultDiv.innerHTML = resultHTML;
 
                 } else {
                     resultDiv.innerHTML = `<p class="text-red-600">
-                        Aucune combinaison valide n'a été trouvée.
-                        <br>Vérifiez que les nageurs ont bien des temps valides (pas "99:99:99" ou vide) 
+                        Aucune combinaison valide n'a été trouvée parmi les nageurs *actifs*.
+                        <br>Vérifiez que les nageurs actifs ont bien des temps valides (format <strong>00:00.00</strong>) 
                         pour les nages requises (${strokes.join(', ')}).
                     </p>`;
                 }
