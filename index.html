@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestion des Relais de Natation</title>
+    <!-- Chargement de Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Configuration de la police Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Définition de la police Inter comme police par défaut */
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        /* Style pour le modal d'alerte */
+        #alert-modal {
+            transition: opacity 0.3s ease;
+        }
+
+        /* Empêcher le défilement lorsque le modal est ouvert */
+        body.modal-open {
+            overflow: hidden;
+        }
+
+        /* Style pour la table scrollable */
+        th, td {
+            white-space: nowrap;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-900">
+
+    <div class="container mx-auto max-w-7xl p-4 md:p-8">
+        <h1 class="text-3xl font-bold text-blue-700 mb-8 text-center">Gestion des Relais de Natation</h1>
+
+        <!-- Section 1: Gestion des Nageurs -->
+        <section class="bg-white p-6 rounded-lg shadow-md mb-8">
+            <h2 class="text-2xl font-semibold mb-6">Gestion des Nageurs</h2>
+            
+            <!-- Formulaire pour ajouter/modifier un nageur -->
+            <form id="swimmer-form" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                <input type="hidden" id="editing-id">
+                
+                <!-- Infos Nageur -->
+                <div>
+                    <label for="nom" class="block text-sm font-medium text-gray-700">Nom</label>
+                    <input type="text" id="nom" required class="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
+                </div>
+                <div>
+                    <label for="prenom" class="block text-sm font-medium text-gray-700">Prénom</label>
+                    <input type="text" id="prenom" required class="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
+                </div>
+
+                <!-- Temps : Dos -->
+                <div>
+                    <label for="50m Dos" class="block text-sm font-medium text-gray-700">50m Dos</label>
+                    <input type="text" id="50m Dos" placeholder="MM:SS.ss" class="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
+                </div>
+                <div>
+                    <label for="100m Dos" class="block text-sm font-medium text-gray-700">100m Dos</label>
+                    <input type="text" id="100m Dos" placeholder="MM:SS.ss" class="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
+                </div>
+                <div>
+                    <label for="200m Dos" class="block text-sm font-medium text-gray-700">200m Dos</label>
+                    <input type="text" id="200m Dos" placeholder="MM:SS.ss" class="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
+                </div>
+
+                <!-- Temps : Brasse -->
+                <div>
+                    <label for="50m Brasse" class="block text-sm font-medium text-gray-700">50m Brasse</label>
+                    <input type="text" id="50m Brasse" placeholder="MM:SS.ss" class="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
+                </div>
+                <div>
+                    <label for="100m Brasse" class="block text-sm font-medium text-gray-700">100m Brasse</label>
+                    <input type="text" id="100m Brasse" placeholder="MM:SS.ss" class="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
+                </div>
+                <div>
+                    <label for="200m Brasse" class="block text-sm font-medium text-gray-700">200m Brasse</label>
+                    <input type="text" id="200m Brasse" placeholder="MM:SS.ss" class="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
+                </div>
+
+                <!-- Temps : Papillon -->
+                <div>
+                    <label for="50m Papillon" class="block text-sm font-medium text-gray-700">50m Papillon</label>
+                    <input type="text" id="50m Papillon" placeholder="MM:SS.ss" class="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
+                </div>
+                <div>
+                    <label for="100m Papillon" class="block text-sm font-medium text-gray-700">100m Papillon</label>
+                    <input type="text" id="100m Papillon" placeholder="MM:SS.ss" class="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
+                </div>
+                <div>
+                    <label for="200m Papillon" class="block text-sm font-medium text-gray-700">200m Papillon</label>
+                    <input type="text" id="200m Papillon" placeholder="MM:SS.ss" class="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
+                </div>
+
+                <!-- Temps : Crawl -->
+                <div>
+                    <label for="50m Crawl" class="block text-sm font-medium text-gray-700">50m Crawl</label>
+                    <input type="text" id="50m Crawl" placeholder="MM:SS.ss" class="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
+                </div>
+                <div>
+                    <label for="100m Crawl" class="block text-sm font-medium text-gray-700">100m Crawl</label>
+                    <input type="text" id="100m Crawl" placeholder="MM:SS.ss" class="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
+                </div>
+                <div>
+                    <label for="200m Crawl" class="block text-sm font-medium text-gray-700">200m Crawl</label>
+                    <input type="text" id="200m Crawl" placeholder="MM:SS.ss" class="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
+                </div>
+
+                <!-- Boutons du formulaire -->
+                <div class="sm:col-span-2 md:col-span-3 lg:col-span-4 flex items-center space-x-4 mt-4">
+                    <button type="submit" id="save-button" class="py-2 px-5 bg-blue-600 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-75">
+                        Enregistrer Nageur
+                    </button>
+                    <button type="button" id="cancel-edit" class="py-2 px-5 bg-gray-500 text-white font-semibold rounded-lg shadow-md hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-opacity-75 hidden">
+                        Annuler la modification
+                    </button>
+                </div>
+            </form>
+
+            <!-- Tableau des Nageurs -->
+            <div class="mt-8 block w-full overflow-x-auto">
+                <table class="min-w-full divide-y divide-gray-200">
+                    <thead class="bg-gray-50">
+                        <tr id="table-header">
+                            <!-- Les en-têtes seront générés par JS -->
+                        </tr>
+                    </thead>
+                    <tbody id="swimmers-list" class="bg-white divide-y divide-gray-200">
+                        <!-- Les nageurs seront insérés ici par JS -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Section 2: Calculateur de Relais -->
+        <section class="bg-white p-6 rounded-lg shadow-md">
+            <h2 class="text-2xl font-semibold mb-6">Calculateur de Relais</h2>
+            
+            <div class="flex flex-col sm:flex-row items-center space-y-4 sm:space-y-0 sm:space-x-4">
+                <select id="relay-type" class="block w-full sm:w-auto p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
+                    <option>10x50m Crawl</option>
+                    <option>4x50m Crawl</option>
+                    <option>4x100m Crawl</option>
+                    <option>4x200m Crawl</option>
+                    <option>4x50m 4 Nages</option>
+                    <option>4x100m 4 Nages</option>
+                    <option>4x200m 4 Nages</option>
+                </select>
+
+                <button id="calculate-relay" class="w-full sm:w-auto py-2 px-5 bg-green-600 text-white font-semibold rounded-lg shadow-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-75">
+                    Calculer le meilleur relais
+                </button>
+            </div>
+
+            <!-- Zone de résultat -->
+            <div id="relay-result" class="mt-6 p-4 bg-gray-50 rounded-lg min-h-[100px] border border-gray-200">
+                <p class="text-gray-500">Les résultats s'afficheront ici.</p>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- Modal pour les alertes (remplace messagebox) -->
+    <div id="alert-modal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50 hidden opacity-0">
+        <div class="bg-white rounded-lg shadow-xl max-w-sm w-full p-6">
+            <h3 id="modal-title" class="text-lg font-medium leading-6 text-gray-900 mb-2"></h3>
+            <div class="mt-2">
+                <p id="modal-message" class="text-sm text-gray-600"></p>
+            </div>
+            <div class="mt-5 sm:mt-6">
+                <button type="button" id="modal-close" class="inline-flex justify-center w-full rounded-md border border-transparent shadow-sm px-4 py-2 bg-blue-600 text-base font-medium text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 sm:text-sm">
+                    Fermer
+                </button>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+
+            // --- CONSTANTES ET DÉFINITIONS ---
+
+            // Définition des colonnes pour les temps
+            const TIME_COLUMNS = [
+                "50m Dos", "100m Dos", "200m Dos",
+                "50m Brasse", "100m Brasse", "200m Brasse",
+                "50m Papillon", "100m Papillon", "200m Papillon",
+                "50m Crawl", "100m Crawl", "200m Crawl"
+            ];
+            // Colonnes complètes pour la table
+            const ALL_COLUMNS = ["Nom", "Prénom", ...TIME_COLUMNS, "Actions"];
+
+            // Définition des nages pour chaque type de relais
+            const RELAY_DEFINITIONS = {
+                "10x50m Crawl": Array(10).fill("50m Crawl"),
+                "4x50m Crawl": Array(4).fill("50m Crawl"),
+                "4x100m Crawl": Array(4).fill("100m Crawl"),
+                "4x200m Crawl": Array(4).fill("200m Crawl"),
+                "4x50m 4 Nages": ["50m Dos", "50m Brasse", "50m Papillon", "50m Crawl"],
+                "4x100m 4 Nages": ["100m Dos", "100m Brasse", "100m Papillon", "100m Crawl"],
+                "4x200m 4 Nages": ["200m Dos", "200m Brasse", "200m Papillon", "200m Crawl"],
+            };
+
+            const DB_KEY = 'swimmersDB';
+
+            // --- ÉTAT DE L'APPLICATION ---
+            let swimmers = [];
+            let editingId = null;
+
+            // --- RÉFÉRENCES DOM ---
+            const form = document.getElementById('swimmer-form');
+            const tableHeader = document.getElementById('table-header');
+            const swimmersList = document.getElementById('swimmers-list');
+            const saveButton = document.getElementById('save-button');
+            const cancelEditButton = document.getElementById('cancel-edit');
+            const calculateButton = document.getElementById('calculate-relay');
+            const relayTypeSelect = document.getElementById('relay-type');
+            const resultDiv = document.getElementById('relay-result');
+            
+            // Modal elements
+            const modal = document.getElementById('alert-modal');
+            const modalTitle = document.getElementById('modal-title');
+            const modalMessage = document.getElementById('modal-message');
+            const modalClose = document.getElementById('modal-close');
+
+            // --- FONCTIONS UTILITAIRES ---
+
+            /**
+             * Affiche une alerte modale
+             * @param {string} title - Le titre du modal
+             * @param {string} message - Le message à afficher
+             */
+            function showAlert(title, message) {
+                modalTitle.textContent = title;
+                modalMessage.innerHTML = message; // Utilise innerHTML pour permettre les <br>
+                modal.classList.remove('hidden');
+                document.body.classList.add('modal-open');
+                setTimeout(() => modal.classList.remove('opacity-0'), 10);
+            }
+
+            // Fermer le modal
+            modalClose.addEventListener('click', () => {
+                modal.classList.add('opacity-0');
+                document.body.classList.remove('modal-open');
+                setTimeout(() => modal.classList.add('hidden'), 300);
+            });
+
+            /**
+             * Convertit un temps "MM:SS.ss" en secondes.
+             * @param {string} timeStr - La chaîne de temps.
+             * @returns {number} Le temps en secondes, ou Infinity si invalide.
+             */
+            function timeToSeconds(timeStr) {
+                if (!timeStr || typeof timeStr !== 'string') {
+                    return Infinity;
+                }
+                if (timeStr === "99:99:99" || timeStr.trim() === "") {
+                    return Infinity;
+                }
+                const parts = timeStr.split(':');
+                if (parts.length !== 2) {
+                    return Infinity;
+                }
+                try {
+                    const minutes = parseInt(parts[0], 10);
+                    const seconds = parseFloat(parts[1]);
+                    if (isNaN(minutes) || isNaN(seconds)) {
+                        return Infinity;
+                    }
+                    return (minutes * 60) + seconds;
+                } catch (e) {
+                    return Infinity;
+                }
+            }
+
+            /**
+             * Convertit les secondes en "MM:SS.sss".
+             * @param {number} seconds - Le temps en secondes.
+             * @returns {string} La chaîne de temps formatée.
+             */
+            function secondsToTime(seconds) {
+                if (seconds === Infinity) {
+                    return "N/A";
+                }
+                const minutes = Math.floor(seconds / 60);
+                const remainingSeconds = seconds % 60;
+                return `${String(minutes).padStart(2, '0')}:${remainingSeconds.toFixed(3).padStart(6, '0')}`;
+            }
+
+            /**
+             * Générateur de permutations.
+             * @param {Array<any>} array - Le tableau d'éléments à permuter.
+             * @param {number} k - La taille de la permutation.
+             */
+            function* getPermutations(array, k) {
+                const n = array.length;
+                if (k > n) {
+                    return;
+                }
+                
+                const indices = Array.from({ length: n }, (_, i) => i);
+                const cycles = Array.from({ length: k }, (_, i) => n - i);
+                
+                yield array.slice(0, k);
+
+                while (true) {
+                    let i = k - 1;
+                    while (i >= 0) {
+                        cycles[i]--;
+                        if (cycles[i] === 0) {
+                            const first = indices[i];
+                            for (let j = i; j < n - 1; j++) {
+                                indices[j] = indices[j + 1];
+                            }
+                            indices[n - 1] = first;
+                            cycles[i] = n - i;
+                        } else {
+                            const j = cycles[i];
+                            const temp = indices[i];
+                            indices[i] = indices[n - j];
+                            indices[n - j] = temp;
+                            
+                            const result = [];
+                            for (let m = 0; m < k; m++) {
+                                result.push(array[indices[m]]);
+                            }
+                            yield result;
+                            break;
+                        }
+                        i--;
+                    }
+                    if (i < 0) {
+                        return;
+                    }
+                }
+            }
+
+            // --- GESTION DES DONNÉES (LocalStorage) ---
+
+            /** Charge les nageurs depuis le LocalStorage */
+            function loadSwimmers() {
+                const data = localStorage.getItem(DB_KEY);
+                swimmers = data ? JSON.parse(data) : [];
+            }
+
+            /** Sauvegarde les nageurs dans le LocalStorage */
+            function saveSwimmers() {
+                localStorage.setItem(DB_KEY, JSON.stringify(swimmers));
+            }
+
+            // --- RENDU DE L'INTERFACE ---
+
+            /** Crée l'en-tête du tableau */
+            function renderTableHeader() {
+                tableHeader.innerHTML = '';
+                ALL_COLUMNS.forEach(col => {
+                    const th = document.createElement('th');
+                    th.scope = 'col';
+                    th.className = 'px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider';
+                    th.textContent = col;
+                    tableHeader.appendChild(th);
+                });
+            }
+
+            /** Affiche la liste des nageurs dans le tableau */
+            function renderSwimmers() {
+                swimmersList.innerHTML = '';
+                if (swimmers.length === 0) {
+                    swimmersList.innerHTML = `
+                        <tr>
+                            <td colspan="${ALL_COLUMNS.length}" class="px-4 py-4 text-center text-gray-500">
+                                Aucun nageur enregistré. Utilisez le formulaire ci-dessus pour commencer.
+                            </td>
+                        </tr>
+                    `;
+                    return;
+                }
+
+                swimmers.forEach(swimmer => {
+                    const tr = document.createElement('tr');
+                    tr.className = 'hover:bg-gray-50';
+                    
+                    // Ajouter Nom et Prénom
+                    tr.innerHTML += `<td class="px-4 py-3 text-sm font-medium text-gray-900">${swimmer.nom}</td>`;
+                    tr.innerHTML += `<td class="px-4 py-3 text-sm text-gray-600">${swimmer.prenom}</td>`;
+                    
+                    // Ajouter les temps
+                    TIME_COLUMNS.forEach(col => {
+                        tr.innerHTML += `<td class="px-4 py-3 text-sm text-gray-600">${swimmer[col] || 'N/A'}</td>`;
+                    });
+
+                    // Ajouter les boutons d'action
+                    const tdActions = document.createElement('td');
+                    tdActions.className = 'px-4 py-3 text-sm font-medium text-right';
+                    
+                    const editButton = document.createElement('button');
+                    editButton.textContent = 'Modifier';
+                    editButton.className = 'text-blue-600 hover:text-blue-900 mr-4';
+                    editButton.dataset.id = swimmer.id;
+                    editButton.addEventListener('click', handleEdit);
+                    
+                    const deleteButton = document.createElement('button');
+                    deleteButton.textContent = 'Supprimer';
+                    deleteButton.className = 'text-red-600 hover:text-red-900';
+                    deleteButton.dataset.id = swimmer.id;
+                    deleteButton.addEventListener('click', handleDelete);
+
+                    tdActions.appendChild(editButton);
+                    tdActions.appendChild(deleteButton);
+                    tr.appendChild(tdActions);
+
+                    swimmersList.appendChild(tr);
+                });
+            }
+
+            // --- GESTIONNAIRES D'ÉVÉNEMENTS ---
+
+            /** Gère la soumission du formulaire */
+            function handleFormSubmit(e) {
+                e.preventDefault();
+
+                const swimmerData = {
+                    id: editingId || Date.now().toString(),
+                    nom: document.getElementById('nom').value.trim(),
+                    prenom: document.getElementById('prenom').value.trim(),
+                };
+
+                TIME_COLUMNS.forEach(col => {
+                    // Valider le format MM:SS.ss (simple validation)
+                    const timeInput = document.getElementById(col).value.trim();
+                    const regex = /^\d{1,2}:\d{2}\.\d{1,3}$/;
+                    if (timeInput && !regex.test(timeInput)) {
+                         // Si un temps est entré mais invalide, on le garde mais il sera traité comme Infini
+                         swimmerData[col] = timeInput; 
+                         console.warn(`Format de temps invalide pour ${col}: ${timeInput}. Il sera traité comme N/A.`);
+                    } else if (timeInput) {
+                        swimmerData[col] = timeInput;
+                    } else {
+                        swimmerData[col] = "99:99:99"; // Valeur par défaut si vide
+                    }
+                });
+
+                if (editingId) {
+                    // Mettre à jour le nageur existant
+                    const index = swimmers.findIndex(s => s.id === editingId);
+                    if (index > -1) {
+                        swimmers[index] = swimmerData;
+                    }
+                } else {
+                    // Ajouter un nouveau nageur
+                    swimmers.push(swimmerData);
+                }
+
+                saveAndReset();
+            }
+
+            /** Charge les données d'un nageur dans le formulaire pour modification */
+            function handleEdit(e) {
+                const id = e.target.dataset.id;
+                const swimmer = swimmers.find(s => s.id === id);
+                if (!swimmer) return;
+
+                editingId = id;
+                document.getElementById('editing-id').value = id;
+                document.getElementById('nom').value = swimmer.nom;
+                document.getElementById('prenom').value = swimmer.prenom;
+                TIME_COLUMNS.forEach(col => {
+                    document.getElementById(col).value = (swimmer[col] === "99:99:99") ? "" : (swimmer[col] || "");
+                });
+
+                saveButton.textContent = 'Mettre à jour le Nageur';
+                cancelEditButton.classList.remove('hidden');
+                window.scrollTo(0, 0); // Remonter en haut du formulaire
+            }
+
+            /** Gère la suppression d'un nageur */
+            function handleDelete(e) {
+                const id = e.target.dataset.id;
+                // Simple confirmation (idéalement, utiliser un modal de confirmation)
+                if (confirm('Êtes-vous sûr de vouloir supprimer ce nageur ?')) {
+                    swimmers = swimmers.filter(s => s.id !== id);
+                    saveAndReset();
+                }
+            }
+
+            /** Réinitialise le formulaire */
+            function resetForm() {
+                form.reset();
+                editingId = null;
+                document.getElementById('editing-id').value = '';
+                saveButton.textContent = 'Enregistrer Nageur';
+                cancelEditButton.classList.add('hidden');
+            }
+
+            /** Sauvegarde, rafraîchit la liste et réinitialise le formulaire */
+            function saveAndReset() {
+                saveSwimmers();
+                renderSwimmers();
+                resetForm();
+            }
+            
+            cancelEditButton.addEventListener('click', resetForm);
+            form.addEventListener('submit', handleFormSubmit);
+
+            /**
+             * Calcule le meilleur temps de relais possible.
+             */
+            async function calculateBestRelay() {
+                const relayType = relayTypeSelect.value;
+                const strokes = RELAY_DEFINITIONS[relayType];
+                const k = strokes.length; // Nombre de nageurs dans le relais
+
+                if (swimmers.length < k) {
+                    showAlert("Erreur de Calcul", `Pas assez de nageurs (${swimmers.length}) pour un relais de ${k}.`);
+                    return;
+                }
+
+                // --- Sécurité pour les grosses permutations ---
+                // P(n, k) devient énorme très vite. P(15, 10) > 10 milliards.
+                // On met une limite raisonnable pour un navigateur.
+                if (k > 8 && swimmers.length > 12) {
+                     showAlert("Calcul Trop Complexe", 
+                        `Calculer un relais de ${k} avec ${swimmers.length} nageurs (P(${swimmers.length}, ${k})) 
+                        est trop long pour le navigateur.<br>
+                        Veuillez réduire le nombre de nageurs dans la base de données (temporairement) 
+                        ou choisir un relais plus court.`
+                    );
+                    return;
+                }
+
+                // Démarrer le calcul (en asynchrone pour l'UI)
+                calculateButton.disabled = true;
+                calculateButton.textContent = 'Calcul en cours...';
+                resultDiv.innerHTML = '<p class="text-blue-600">Calcul en cours, veuillez patienter...</p>';
+
+                // Laisse le temps à l'UI de se mettre à jour avant le calcul lourd
+                await new Promise(resolve => setTimeout(resolve, 50));
+
+                let bestTime = Infinity;
+                let bestCombination = null;
+                let combinationsChecked = 0;
+
+                // Itérer sur toutes les permutations possibles des nageurs
+                for (const combination of getPermutations(swimmers, k)) {
+                    combinationsChecked++;
+                    let totalTime = 0;
+                    let valid = true;
+
+                    for (let i = 0; i < k; i++) {
+                        const swimmer = combination[i];
+                        const stroke = strokes[i]; // La nage requise pour ce segment
+                        const swimmerTimeStr = swimmer[stroke];
+                        const swimmerTimeSec = timeToSeconds(swimmerTimeStr);
+
+                        if (swimmerTimeSec === Infinity) {
+                            valid = false;
+                            break;
+                        }
+                        totalTime += swimmerTimeSec;
+                    }
+
+                    if (valid && totalTime < bestTime) {
+                        bestTime = totalTime;
+                        bestCombination = combination;
+                    }
+                }
+
+                // Afficher le résultat
+                if (bestCombination) {
+                    let resultHTML = `<h3 class="text-lg font-semibold text-green-800">Meilleure Combinaison Trouvée !</h3>`;
+                    resultHTML += `<p class="font-bold text-2xl my-2">${secondsToTime(bestTime)}</p>`;
+                    resultHTML += `<ol class="list-decimal list-inside mt-2 space-y-1">`;
+                    
+                    bestCombination.forEach((swimmer, i) => {
+                        const stroke = strokes[i];
+                        const time = swimmer[stroke];
+                        resultHTML += `<li>
+                            <strong>${swimmer.nom} ${swimmer.prenom}</strong> (${stroke}): ${time}
+                        </li>`;
+                    });
+                    
+                    resultHTML += `</ol>`;
+                    resultHTML += `<p class="text-xs text-gray-500 mt-4">${combinationsChecked.toLocaleString('fr-FR')} combinaisons vérifiées.</p>`;
+                    resultDiv.innerHTML = resultHTML;
+
+                } else {
+                    resultDiv.innerHTML = `<p class="text-red-600">
+                        Aucune combinaison valide n'a été trouvée.
+                        <br>Vérifiez que les nageurs ont bien des temps valides (pas "99:99:99" ou vide) 
+                        pour les nages requises (${strokes.join(', ')}).
+                    </p>`;
+                }
+
+                calculateButton.disabled = false;
+                calculateButton.textContent = 'Calculer le meilleur relais';
+            }
+
+            calculateButton.addEventListener('click', calculateBestRelay);
+
+            // --- INITIALISATION ---
+            function init() {
+                loadSwimmers();
+                renderTableHeader();
+                renderSwimmers();
+            }
+
+            init();
+        });
+    </script>
+</body>
+</html>
